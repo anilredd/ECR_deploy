@@ -1,5 +1,15 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
-COPY ./app /app
-RUN pip install -r requirements.txt
-EXPOSE 80
-CMD ["uvicorn", "app_api:app", "--host", "0.0.0.0", "--port", "80"]
+FROM node:18-alpine
+
+RUN npm install -g nodemon
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["npm", "run", "dev"]
