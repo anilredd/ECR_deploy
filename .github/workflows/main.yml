@@ -51,6 +51,10 @@ jobs:
         host: 172.31.23.15
         username: ec2-user
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Start AWS EC2
+        # Run AWS Command on the GitHub Hosted runner which starts the instance using AWS authentication stored in GitHub Secrets (see below how to add)
+        run: |
+          aws ec2 start-instances --instance-ids ${{secrets.AWS_EC2_INSTANCE_ID }}    
         script: |
           docker stop <CONTAINER_NAME> || true
           docker rm <CONTAINER_NAME> || true
