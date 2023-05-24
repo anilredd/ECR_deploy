@@ -35,7 +35,7 @@ jobs:
         ECR_REPOSITORY: openbanking_backend
         IMAGE_TAG: open_banking_image
     
-	- name: Set up SSH
+    - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
