@@ -40,19 +40,19 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     
-	steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+  - name: Set up SSH
+    uses: webfactory/ssh-agent@v0.5.0
+    with:
+       ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: SSH into EC2
-        uses: appleboy/ssh-action@master
-        with:
-          host: <EC2_IP_ADDRESS>
-          username: <EC2_USERNAME>
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
+   - name: SSH into EC2
+     uses: appleboy/ssh-action@master
+     with:
+        host: <EC2_IP_ADDRESS>
+        username: <EC2_USERNAME>
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
