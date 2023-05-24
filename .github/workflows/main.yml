@@ -45,10 +45,10 @@ jobs:
         host: 172.31.23.15
         username: ec2-user
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          docker stop <CONTAINER_NAME> || true
-          docker rm <CONTAINER_NAME> || true
-          docker pull <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<ECR_REPOSITORY_NAME>:<TAG>
-          docker run -d --name <CONTAINER_NAME> -p <HOST_PORT>:<CONTAINER_PORT> <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<ECR_REPOSITORY_NAME>:<TAG>
+        #script: |
+        #  docker stop <CONTAINER_NAME> || true
+        #  docker rm <CONTAINER_NAME> || true
+        #  docker pull <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<ECR_REPOSITORY_NAME>:<TAG>
+        #  docker run -d --name <CONTAINER_NAME> -p <HOST_PORT>:<CONTAINER_PORT> <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<ECR_REPOSITORY_NAME>:<TAG>
 
 
