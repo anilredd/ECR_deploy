@@ -45,14 +45,14 @@ jobs:
     - name: Configure SSH
       uses: webfactory/ssh-agent@v0.5.0
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
 
     - name: Connect to EC2 instance
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOSTNAME }}
         username: ${{ secrets.USER_NAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.PRIVATE_KEY }}
     - name: Deploy Docker container to EC2 instance
       env:
           ECR_REGISTRY: openbanking_backend
