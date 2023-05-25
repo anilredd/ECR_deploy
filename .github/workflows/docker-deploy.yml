@@ -52,6 +52,6 @@ jobs:
          mkdir -p ~/.ssh
          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
          chmod 600 ~/.ssh/id_rsa
-         ssh -o "StrictHostKeyChecking no" ec2-user@13.238.148.132 'sudo su -'
+         ssh -o "StrictHostKeyChecking no" ec2-user@13.238.148.132 'sudo su -' 'cd openbanking-sandbox-backend/' 'docker-compose up -d'
 env:
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
