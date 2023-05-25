@@ -60,7 +60,7 @@ jobs:
         USER_NAME : ${{ secrets.USER_NAME  }}
 
       run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        echo :"$PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
         ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@13.238.148.132 'sudo su -'
         ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@13.238.148.132 'docker-compose up -d'
