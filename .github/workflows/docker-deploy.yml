@@ -41,3 +41,11 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      
+    - name: Deploy Docker container to EC2 instance
+      env:
+        ECR_REGISTRY: openbanking_backend
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@13.238.148.132 'docker-compose pull'
+        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@13.238.148.132 'docker-compose up -d'  
