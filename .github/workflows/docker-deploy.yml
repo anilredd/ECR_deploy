@@ -47,5 +47,5 @@ jobs:
         ECR_REGISTRY: openbanking_backend
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@13.238.148.132 'docker-compose pull'
-        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@13.238.148.132 'docker-compose up -d'  
+        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@172.31.23.15 'docker-compose pull'
+        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@172.31.23.15 'docker-compose up -d'  
